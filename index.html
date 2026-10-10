@@ -1,0 +1,396 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Omarzain Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: left-aligned single column, wide grid sections; hero carries a small iFlow strip (Timer > Content Modifier > End) as the signature detail. */
+:root{
+  --bg:#F2F5F4; --surface:#FFFFFF; --fg:#13211F; --muted:#51635F; --line:#D5DFDC;
+  --accent:#0A6B66; --accent-ink:#FFFFFF; --mark:#E8A317;
+  --f-display:'Bricolage Grotesque',system-ui,sans-serif;
+  --f-body:'Instrument Sans',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  /* fixed colors for the concept mockups (same in both themes, they are illustrations) */
+  --sp-bg:#F1F6EC; --sp-ink:#1F3A2A; --sp-green:#3F8F5B; --sp-leaf:#BFE0C5; --sp-water:#4A90D9; --sp-card:#FFFFFF;
+  --sf-bg:#FFFFFF; --sf-ink:#0B1D2A; --sf-accent:#FFD23F; --sf-soft:#EEF2F6; --sf-mid:#5B6B79;
+  --kl-brown:#3B2417; --kl-turmeric:#E0A526; --kl-leaf:#2F6B4F; --kl-steel:#C9D1D3; --kl-milk:#F7F1E6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1716; --surface:#16211F; --fg:#E7EFED; --muted:#9FB2AD; --line:#263634;
+    --accent:#5CCFC4; --accent-ink:#072320; --mark:#F2B93B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1716; --surface:#16211F; --fg:#E7EFED; --muted:#9FB2AD; --line:#263634;
+  --accent:#5CCFC4; --accent-ink:#072320; --mark:#F2B93B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;padding-inline:20px;padding-block:0 64px}
+.wrap{max-width:1040px;margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-0.02em}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--mark);outline-offset:3px}
+.mono{font-family:var(--f-mono)}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;flex-wrap:wrap}
+.bar .name{font-family:var(--f-display);font-weight:700;font-size:20px}
+.bar nav{display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+.bar nav a{color:var(--fg);text-decoration:none}
+.bar nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;align-items:center;padding-block:56px 72px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--mark) 62%,var(--mark) 92%,transparent 92%)}
+.hero p.lead{margin-top:20px;font-size:1.15rem;color:var(--muted);max-width:52ch}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:6px;font-weight:600;text-decoration:none;font-size:15px}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{border:1.5px solid var(--fg);color:var(--fg)}
+.flow{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px}
+.flow svg{width:100%;height:auto;display:block}
+.flow .node{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+.flow .node.hot{stroke:var(--accent);stroke-width:2}
+.flow text{font-family:var(--f-mono);font-size:11px;fill:var(--fg)}
+.flow .arrow{stroke:var(--muted);stroke-width:1.5;fill:none}
+.flow .cap{margin-top:12px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+/* sections */
+section{padding-block:56px;border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;max-width:62ch}
+.head h2{font-size:clamp(1.8rem,4vw,2.5rem)}
+.head p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.card h3{font-size:1.35rem}
+.card p{color:var(--muted);font-size:15px}
+.pill{align-self:flex-start;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:99px;border:1px solid var(--line)}
+.pill.live{border-color:var(--accent);color:var(--accent)}
+.pill.build{border-color:var(--mark);color:var(--fg)}
+.stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.stack span{font-family:var(--f-mono);font-size:12px;background:var(--bg);padding:3px 8px;border-radius:4px}
+
+/* concept blocks */
+.concept{display:grid;gap:24px;margin-bottom:56px;min-width:0}
+.concept:last-child{margin-bottom:0}
+.concept header{display:flex;flex-direction:column;gap:8px;max-width:62ch}
+.concept h3{font-size:1.6rem}
+.concept header p{color:var(--muted)}
+.tag{align-self:flex-start;font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--fg);color:var(--bg);padding:3px 10px;border-radius:4px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:24px;overflow-x:auto}
+
+/* Sprout phones */
+.phones{display:flex;gap:20px;flex-wrap:wrap;justify-content:flex-start}
+.phone{width:176px;aspect-ratio:9/18.5;max-width:100%;background:var(--sp-bg);color:var(--sp-ink);border-radius:26px;border:6px solid var(--sp-ink);padding:14px 11px;display:flex;flex-direction:column;gap:9px;font-size:10px;line-height:1.35;overflow:hidden}
+.phone h4{margin:0;font-family:var(--f-display);font-size:16px;line-height:1.1;letter-spacing:-.01em}
+.phone .sub{opacity:.7}
+.prow{background:var(--sp-card);border-radius:10px;padding:8px;display:flex;align-items:center;gap:8px}
+.prow i{width:26px;height:26px;border-radius:50%;background:var(--sp-leaf);flex:none;display:block;position:relative}
+.prow i::after{content:"";position:absolute;inset:7px 9px 5px 9px;background:var(--sp-green);border-radius:60% 0 60% 0}
+.prow b{display:block;font-size:11px}
+.chip{margin-left:auto;font-size:9px;background:var(--sp-leaf);padding:2px 6px;border-radius:99px;white-space:nowrap}
+.chip.due{background:var(--sp-water);color:#fff}
+.pbtn{margin-top:auto;background:var(--sp-green);color:#fff;text-align:center;padding:8px;border-radius:10px;font-weight:600;font-size:11px}
+.hero-leaf{height:78px;border-radius:14px;background:var(--sp-leaf);display:grid;place-items:center}
+.stat{display:flex;justify-content:space-between;background:var(--sp-card);padding:7px 8px;border-radius:8px}
+.field{background:var(--sp-card);border-radius:8px;padding:7px 8px}
+.field small{display:block;opacity:.6;font-size:9px}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center}
+.week span{background:var(--sp-card);border-radius:6px;padding:4px 0}
+.week span.on{background:var(--sp-water);color:#fff}
+
+/* ScriptFlow browser */
+.browser{border:1px solid var(--line);border-radius:10px;overflow:hidden;min-width:560px;background:var(--sf-bg);color:var(--sf-ink)}
+.browser .chrome{display:flex;gap:6px;padding:10px 12px;background:var(--sf-soft)}
+.browser .chrome i{width:10px;height:10px;border-radius:50%;background:#C3CCD5;display:block}
+.sf-nav{display:flex;align-items:center;gap:22px;padding:14px 28px;font-size:13px}
+.sf-nav b{font-family:var(--f-display);font-size:17px;margin-right:auto}
+.sf-nav .go{background:var(--sf-ink);color:#fff;padding:7px 14px;border-radius:6px;font-weight:600}
+.sf-hero{padding:44px 28px 36px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.sf-hero h5{margin:0;font-family:var(--f-display);font-size:34px;line-height:1.05;letter-spacing:-.02em}
+.sf-hero h5 u{text-decoration:none;background:var(--sf-accent);padding:0 4px}
+.sf-hero p{margin-top:14px;color:var(--sf-mid);font-size:14px;max-width:40ch}
+.sf-hero .row{margin-top:20px;display:flex;gap:10px}
+.sf-hero .row span{padding:9px 16px;border-radius:6px;font-weight:600;font-size:13px}
+.sf-hero .row .a{background:var(--sf-accent)}
+.sf-hero .row .b{border:1.5px solid var(--sf-ink)}
+.script{background:var(--sf-soft);border-radius:10px;padding:16px;font-family:var(--f-mono);font-size:11px;line-height:1.6}
+.script .h{font-weight:500;margin-bottom:6px}
+.script .l{height:7px;border-radius:4px;background:#C3CCD5;margin-top:7px}
+.script .l:nth-child(4){width:80%}.script .l:nth-child(5){width:60%}.script .l:nth-child(6){width:90%}
+.sf-feat{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:0 28px 32px}
+.sf-feat div{border:1px solid #D8E0E7;border-radius:8px;padding:16px;font-size:13px}
+.sf-feat b{display:block;font-family:var(--f-display);font-size:15px;margin-bottom:4px}
+.sf-feat span{color:var(--sf-mid)}
+.sf-price{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:0 28px 32px}
+.sf-price div{background:var(--sf-soft);border-radius:8px;padding:16px;font-size:13px}
+.sf-price b{font-family:var(--f-display);font-size:22px;display:block}
+.sf-price .pro{background:var(--sf-ink);color:#fff}
+.sf-price .pro b{color:var(--sf-accent)}
+
+/* Kaapi Lane brand kit */
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}
+.kit > div{border-radius:10px;padding:24px;min-width:0}
+.logo-panel{background:var(--kl-milk);color:var(--kl-brown);display:flex;flex-direction:column;align-items:flex-start;gap:14px}
+.logo-panel svg{width:150px;height:auto}
+.logo-panel .wm{font-family:var(--f-display);font-weight:700;font-size:38px;line-height:1;letter-spacing:-.03em}
+.logo-panel .tl{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.swatches{background:var(--kl-milk);display:grid;gap:8px;align-content:start}
+.sw{display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:12px;color:var(--kl-brown)}
+.sw i{width:44px;height:44px;border-radius:8px;display:block;border:1px solid rgba(59,36,23,.15)}
+.sw b{display:block;font-family:var(--f-body);font-size:14px}
+.type-panel{background:var(--kl-brown);color:var(--kl-milk);display:flex;flex-direction:column;gap:12px}
+.type-panel .big{font-family:var(--f-display);font-weight:700;font-size:46px;line-height:1;letter-spacing:-.03em;color:var(--kl-turmeric)}
+.type-panel p{font-size:14px;opacity:.9}
+.label{background:var(--kl-leaf);color:var(--kl-milk);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:4px}
+.label b{font-family:var(--f-display);font-size:22px;line-height:1}
+.label span{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--kl-turmeric)}
+
+/* about */
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:28px}
+.cols h3{font-size:1.1rem;margin-bottom:10px}
+.cols ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
+.cols li{margin-bottom:4px}
+.contact{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.contact h2{font-size:clamp(1.8rem,4vw,2.4rem)}
+.contact .mail{font-family:var(--f-mono);font-size:15px;background:var(--bg);padding:8px 12px;border-radius:6px;align-self:flex-start;max-width:100%;overflow-wrap:anywhere}
+footer{padding-top:32px;color:var(--muted);font-size:13px;font-family:var(--f-mono)}
+
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;padding-block:32px 48px}
+  section{padding-block:40px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn{transition:transform .15s ease}
+  .btn:hover{transform:translateY(-2px)}
+}
+</style>
+
+<div class="wrap">
+  <div class="bar">
+    <span class="name">Omarzain</span>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#design">Design concepts</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Self-taught developer, India, remote</p>
+      <h1 style="margin-top:14px">I build <em>automation</em> and integration flows.</h1>
+      <p class="lead">Python and Gemini API projects today, SAP Integration Suite next. I learn by shipping small working things and then making them better.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="flow" role="img" aria-label="Diagram of an SAP integration flow: Timer, Content Modifier, End">
+      <svg viewBox="0 0 360 120" xmlns="http://www.w3.org/2000/svg">
+        <rect class="node hot" x="8" y="38" width="84" height="44" rx="8"/>
+        <text x="50" y="64" text-anchor="middle">Timer</text>
+        <path class="arrow" d="M92 60 H126"/><path class="arrow" d="M120 54 L127 60 L120 66"/>
+        <rect class="node" x="128" y="38" width="108" height="44" rx="8"/>
+        <text x="182" y="64" text-anchor="middle">Content Modifier</text>
+        <path class="arrow" d="M236 60 H266"/><path class="arrow" d="M260 54 L267 60 L260 66"/>
+        <circle class="node hot" cx="298" cy="60" r="22"/>
+        <text x="298" y="64" text-anchor="middle">End</text>
+      </svg>
+      <p class="cap">My first deployed iFlow on SAP BTP Integration Suite. It ran successfully.</p>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="head">
+      <p class="eyebrow">Projects</p>
+      <h2>Things I have built</h2>
+      <p>Personal projects, each with a clear status. Links to code and the channel go here once they are public.</p>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="pill build">In progress</span>
+        <h3>YouTube Script Generator</h3>
+        <p>A Python tool that writes video scripts through the Gemini API. Built in VS Code, with API keys, a Python 3.13 environment and quota limits all worked through along the way.</p>
+        <div class="stack"><span>Python</span><span>Gemini API</span><span>VS Code</span></div>
+      </article>
+      <article class="card">
+        <span class="pill live">Live</span>
+        <h3>Faceless True Crime Channel</h3>
+        <p>A faceless YouTube channel with a repeatable production workflow: script, ElevenLabs voiceover, Pexels visuals, DaVinci Resolve edit. The first video is published. Automating the workflow with Python and MoviePy is next.</p>
+        <div class="stack"><span>ElevenLabs</span><span>Pexels API</span><span>DaVinci Resolve</span></div>
+      </article>
+      <article class="card">
+        <span class="pill build">Learning</span>
+        <h3>SAP Integration Suite (CPI)</h3>
+        <p>Learning integration on SAP BTP from zero. Set up a trial account, subscribed to Integration Suite, then built and deployed a first iFlow. Practising XML and JSON handling before moving to S/4HANA scenarios.</p>
+        <div class="stack"><span>SAP BTP</span><span>iFlow</span><span>XML</span><span>JSON</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="design">
+    <div class="head">
+      <p class="eyebrow">Concept projects, not client work</p>
+      <h2>Design concepts</h2>
+      <p>Three self-initiated pieces: a mobile app, a landing page and a brand kit. Each one is a concept made to practise a design skill.</p>
+    </div>
+
+    <div class="concept">
+      <header>
+        <span class="tag">Concept project</span>
+        <h3>Sprout, a plant-care app</h3>
+        <p>Four screens for people who forget to water. The home screen answers one question first: which plant needs water today.</p>
+      </header>
+      <div class="stage">
+        <div class="phones">
+          <div class="phone" aria-label="Sprout home screen">
+            <div><h4>Today</h4><span class="sub">Sat 10 Oct, 2 plants need water</span></div>
+            <div class="prow"><i></i><span><b>Monstera</b>Living room</span><span class="chip due">Water today</span></div>
+            <div class="prow"><i></i><span><b>Snake plant</b>Bedroom</span><span class="chip">In 4 days</span></div>
+            <div class="prow"><i></i><span><b>Tulsi</b>Balcony</span><span class="chip due">Water today</span></div>
+            <div class="pbtn">Add plant</div>
+          </div>
+          <div class="phone" aria-label="Sprout plant detail screen">
+            <div><h4>Monstera</h4><span class="sub">Living room</span></div>
+            <div class="hero-leaf">
+              <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><ellipse cx="28" cy="28" rx="13" ry="24" fill="#3F8F5B" transform="rotate(35 28 28)"/><path d="M14 44 L38 12" stroke="#BFE0C5" stroke-width="2"/></svg>
+            </div>
+            <div class="stat"><span>Water</span><b>Every 7 days</b></div>
+            <div class="stat"><span>Light</span><b>Bright, indirect</b></div>
+            <div class="stat"><span>Last watered</span><b>7 days ago</b></div>
+            <div class="pbtn">Mark as watered</div>
+          </div>
+          <div class="phone" aria-label="Sprout add plant screen">
+            <div><h4>Add plant</h4><span class="sub">Takes 20 seconds</span></div>
+            <div class="field"><small>Name</small>Money plant</div>
+            <div class="field"><small>Room</small>Study</div>
+            <div class="field"><small>Light</small>Low to medium</div>
+            <div class="field"><small>Water every</small>10 days</div>
+            <div class="pbtn">Save plant</div>
+          </div>
+          <div class="phone" aria-label="Sprout schedule screen">
+            <div><h4>This week</h4><span class="sub">Water days</span></div>
+            <div class="week"><span>M</span><span class="on">T</span><span>W</span><span>T</span><span class="on">F</span><span class="on">S</span><span>S</span></div>
+            <div class="prow"><i></i><span><b>Tulsi</b>Sat</span><span class="chip due">Today</span></div>
+            <div class="prow"><i></i><span><b>Monstera</b>Sat</span><span class="chip due">Today</span></div>
+            <div class="prow"><i></i><span><b>Snake plant</b>Wed</span><span class="chip">Next</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <header>
+        <span class="tag">Concept project</span>
+        <h3>ScriptFlow, a landing page</h3>
+        <p>A page for an imaginary tool that turns a topic into a video script. Built around one promise in the headline, one sample of the output, and two plain price options.</p>
+      </header>
+      <div class="stage">
+        <div class="browser" role="img" aria-label="ScriptFlow landing page concept">
+          <div class="chrome"><i></i><i></i><i></i></div>
+          <div class="sf-nav"><b>ScriptFlow</b><span>Features</span><span>Pricing</span><span class="go">Start free</span></div>
+          <div class="sf-hero">
+            <div>
+              <h5>Video scripts in <u>minutes</u>, not evenings.</h5>
+              <p>Pick a niche, give a topic, and get a structured script with a hook, a story and an outro you can edit.</p>
+              <div class="row"><span class="a">Write my first script</span><span class="b">See a sample</span></div>
+            </div>
+            <div class="script">
+              <div class="h">Topic: The 1920s bank heist</div>
+              <div>HOOK, 0:00 to 0:15</div>
+              <div class="l"></div><div class="l"></div><div class="l"></div>
+              <div style="margin-top:10px">STORY, 0:15 to 6:30</div>
+              <div class="l"></div>
+            </div>
+          </div>
+          <div class="sf-feat">
+            <div><b>Pick a niche</b><span>History, finance, true crime and more.</span></div>
+            <div><b>Generate</b><span>A full script with timing marks.</span></div>
+            <div><b>Edit and export</b><span>Tweak lines, copy to your editor.</span></div>
+          </div>
+          <div class="sf-price">
+            <div><b>Free</b>3 scripts per month</div>
+            <div class="pro"><b>Creator</b>Unlimited scripts, concept price only</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concept">
+      <header>
+        <span class="tag">Concept project</span>
+        <h3>Kaapi Lane, a brand kit</h3>
+        <p>A brand for a South Indian filter coffee stall. The mark is the steel tumbler and its saucer, the palette comes from decoction, turmeric and banana leaf.</p>
+      </header>
+      <div class="kit">
+        <div class="logo-panel">
+          <svg viewBox="0 0 150 130" aria-label="Kaapi Lane logo mark: a steel tumbler and saucer with steam">
+            <path d="M52 14 C44 22 60 28 52 38" fill="none" stroke="#E0A526" stroke-width="4" stroke-linecap="round"/>
+            <path d="M75 8 C67 18 83 26 75 38" fill="none" stroke="#E0A526" stroke-width="4" stroke-linecap="round"/>
+            <path d="M98 14 C90 22 106 28 98 38" fill="none" stroke="#E0A526" stroke-width="4" stroke-linecap="round"/>
+            <path d="M34 48 H116 L106 98 H44 Z" fill="#3B2417"/>
+            <rect x="34" y="48" width="82" height="9" rx="3" fill="#2F6B4F"/>
+            <ellipse cx="75" cy="108" rx="58" ry="10" fill="#C9D1D3"/>
+            <ellipse cx="75" cy="104" rx="40" ry="6" fill="#3B2417"/>
+          </svg>
+          <div class="wm">Kaapi Lane</div>
+          <div class="tl">Filter coffee, since this morning</div>
+        </div>
+        <div class="swatches">
+          <div class="sw"><i style="background:var(--kl-brown)"></i><span><b>Decoction</b>#3B2417</span></div>
+          <div class="sw"><i style="background:var(--kl-turmeric)"></i><span><b>Turmeric</b>#E0A526</span></div>
+          <div class="sw"><i style="background:var(--kl-leaf)"></i><span><b>Banana leaf</b>#2F6B4F</span></div>
+          <div class="sw"><i style="background:var(--kl-steel)"></i><span><b>Steel</b>#C9D1D3</span></div>
+          <div class="sw"><i style="background:var(--kl-milk)"></i><span><b>Milk</b>#F7F1E6</span></div>
+        </div>
+        <div class="type-panel">
+          <span class="eyebrow" style="color:var(--kl-steel)">Type, Bricolage Grotesque + Instrument Sans</span>
+          <div class="big">Strong, then sweet.</div>
+          <p>Headlines use a heavy grotesque with tight spacing. Body copy stays in a quiet sans so menus and price boards read fast from across a counter.</p>
+          <div class="label"><span>Pack label</span><b>Kaapi Lane</b><span>Filter coffee, 250 g</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="head">
+      <p class="eyebrow">About</p>
+      <h2>Self-taught, and building in public</h2>
+      <p>I have no formal work history in tech, so my projects are my proof. I learn a tool, build something real with it, and write down what I got wrong.</p>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>Working with</h3>
+        <ul><li>Python</li><li>Gemini API, ElevenLabs API, Pexels API</li><li>XML and JSON</li><li>VS Code, DaVinci Resolve</li></ul>
+      </div>
+      <div>
+        <h3>Learning now</h3>
+        <ul><li>SAP BTP Integration Suite (Cloud Integration)</li><li>S/4HANA integration scenarios</li><li>Automating video workflows with MoviePy</li></ul>
+      </div>
+      <div>
+        <h3>Also</h3>
+        <ul><li>Freelance AI data annotation, DataAnnotation.tech</li><li>Design concepts for mobile, web and brand</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Open to remote contract work</h2>
+      <p style="color:var(--muted)">Small automation, scripting and integration tasks are a good fit.</p>
+      <span class="mail">omarzain1303@gmail.com</span>
+    </div>
+    <footer>Omarzain, India. Design pieces on this page are personal concept projects.</footer>
+  </section>
+</div>
+
+</body></html>
